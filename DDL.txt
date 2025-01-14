@@ -1,0 +1,24 @@
+create table customer(
+customer_id varchar(20),
+customer_name varchar(20) not null,
+customer_tel number,
+constraint fk_cust primary key(customer_id)
+)
+
+create table product(
+product_id varchar(20),
+product_name varchar(20) not null,
+price number check (price > 0),
+constraint fk_cust primary key(product_id)
+)
+
+CREATE TABLE orders (
+customer_id VARCHAR(20),
+product_id VARCHAR(20),
+order_date DATE NOT NULL,
+quantity Number,
+total_amount number,
+constraint pk_order PRIMARY KEY (customer_id, product_id),
+constraint fk_order_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id), -- Clé étrangère vers customer
+constraint fk_order_product FOREIGN KEY (product_id) REFERENCES product(product_id) -- Clé étrangère vers product
+);
