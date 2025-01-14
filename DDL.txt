@@ -22,3 +22,13 @@ constraint pk_order PRIMARY KEY (customer_id, product_id),
 constraint fk_order_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id), -- Clé étrangère vers customer
 constraint fk_order_product FOREIGN KEY (product_id) REFERENCES product(product_id) -- Clé étrangère vers product
 );
+
+
+
+
+ALTER TABLE product
+ADD categorie VARCHAR2(20);
+
+
+ALTER TABLE orders
+ADD order_date DATE DEFAULT SYSDATE;
